@@ -1,3 +1,32 @@
 <?php
 
 include_once('obcdi_distro.features.inc');
+
+
+/**
+ * Implementation of hook_menu_alter()
+ */
+function obcdi_distro_menu_alter(&$items) {
+  $items['node']['access callback'] = FALSE;
+
+  $items['node/%node']['access callback'] = 
+  $items['node/%node/edit']['access callback'] = 
+  $items['node/%node/delete']['access callback'] = 
+    'obcdi_distro_node_menu_access';
+}
+
+/**
+ * Provides access do node/nid/view only for page nodes
+ * @param   
+ * @return  
+ */
+function obcdi_distro_node_menu_access($op, $node) {
+  switch ($op) {
+    case 'view':
+      if ($node->type != 'rt_page') {
+        return FALSE;
+      }
+      break;
+  }
+  return node_access($op, $node);
+}
