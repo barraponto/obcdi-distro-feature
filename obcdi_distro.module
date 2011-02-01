@@ -11,8 +11,6 @@ function obcdi_distro_menu_alter(&$items) {
   $items['juitter']['access_callback'] = FALSE;
 
   $items['node/%node']['access callback'] = 
-  $items['node/%node/edit']['access callback'] = 
-  $items['node/%node/delete']['access callback'] = 
     'obcdi_distro_node_menu_access';
 }
 
