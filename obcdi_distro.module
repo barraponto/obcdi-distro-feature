@@ -7,7 +7,8 @@ include_once('obcdi_distro.features.inc');
  * Implementation of hook_menu_alter()
  */
 function obcdi_distro_menu_alter(&$items) {
-  $items['node']['access callback'] = FALSE;
+  $items['node']['access callback'] = 
+  $items['juitter']['access_callback'] = FALSE;
 
   $items['node/%node']['access callback'] = 
   $items['node/%node/edit']['access callback'] = 
